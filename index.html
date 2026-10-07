@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hangyul Yoon — Physician & AI Researcher</title>
+<meta name="description" content="Hangyul Yoon, MD. AI MSc student at KAIST working on medical vision-language models, clinical LLM benchmarks, and chest X-ray interpretation.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<!--
+  ===================================================================
+  TODO — items pulled from public sources (Google Scholar, alphaXiv,
+  LinkedIn snippet). Please verify / fill in before publishing:
+    [ ] Email address (search for "EMAIL")
+    [ ] Photo: add photo.jpg next to this file (or delete the <img>)
+    [ ] CV: add cv.pdf next to this file
+    [ ] Education & clinical training details in the CV section
+    [ ] Venues for 2025–2026 papers (which three went to NeurIPS 2026 D&B?)
+    [ ] Advisor / lab name
+  ===================================================================
+-->
+<style>
+  :root{
+    --paper:#F7F9FA;
+    --panel:#FFFFFF;
+    --ink:#182230;
+    --body:#3E4A59;
+    --muted:#73808F;
+    --rule:#DCE3EA;
+    --teal:#0C6B73;
+    --teal-soft:#E3F1F2;
+    --maxw:1120px;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --paper:#0F1519; --panel:#151D23; --ink:#E9EEF2; --body:#B9C3CC;
+      --muted:#7F8B96; --rule:#26323B; --teal:#5CC3C9; --teal-soft:#13353A;
+    }
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+  body{
+    margin:0; background:var(--paper); color:var(--body);
+    font-family:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+    font-size:16px; line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:var(--teal); text-decoration:none; border-bottom:1px solid transparent}
+  a:hover{border-bottom-color:currentColor}
+  a:focus-visible{outline:2px solid var(--teal); outline-offset:3px; border-radius:2px}
+
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 24px}
+  .layout{display:grid; grid-template-columns:300px 1fr; gap:72px; padding:72px 0 96px}
+
+  /* ---------- sidebar ---------- */
+  .side{position:sticky; top:40px; align-self:start}
+  .photo{
+    width:132px; height:132px; border-radius:50%; object-fit:cover;
+    background:var(--teal-soft); display:block; margin-bottom:24px;
+    border:1px solid var(--rule);
+  }
+  h1{
+    font-family:"Newsreader",Georgia,serif; font-weight:500; font-size:38px;
+    line-height:1.1; letter-spacing:-0.01em; color:var(--ink); margin:0 0 4px;
+  }
+  .hanja{font-family:"Newsreader",Georgia,serif; color:var(--muted); font-size:17px; margin:0 0 18px}
+  .role{margin:0 0 4px; color:var(--ink); font-weight:500}
+  .affil{margin:0 0 26px; color:var(--muted); font-size:15px; line-height:1.5}
+  .affil a{color:inherit}
+  nav{border-top:1px solid var(--rule); padding-top:18px; margin-bottom:26px}
+  nav a{display:block; color:var(--body); padding:5px 0; border:0; font-size:15px}
+  nav a:hover{color:var(--teal)}
+  .links{display:flex; flex-wrap:wrap; gap:8px 16px; font-size:15px}
+  .links a{display:inline-flex; align-items:center; gap:6px}
+  .links svg{width:15px; height:15px; fill:currentColor}
+
+  /* ---------- main ---------- */
+  main{min-width:0}
+  section{padding-bottom:64px}
+  section + section{border-top:1px solid var(--rule); padding-top:56px}
+  h2{
+    font-family:"Newsreader",Georgia,serif; font-weight:500; font-size:28px;
+    color:var(--ink); margin:0 0 24px; letter-spacing:-0.01em; line-height:1.2;
+  }
+  .lede{
+    font-family:"Newsreader",Georgia,serif; font-size:23px; line-height:1.45;
+    color:var(--ink); margin:0 0 20px; max-width:34em;
+  }
+  p{margin:0 0 16px; max-width:38em}
+  .interests{display:flex; flex-wrap:wrap; gap:8px; margin-top:24px}
+  .interests span{
+    font-size:14px; padding:4px 11px; border-radius:999px;
+    background:var(--teal-soft); color:var(--teal);
+  }
+
+  /* news */
+  .news{list-style:none; padding:0; margin:0; max-width:40em}
+  .news li{display:grid; grid-template-columns:88px 1fr; gap:16px; padding:10px 0; border-bottom:1px dashed var(--rule)}
+  .news li:last-child{border-bottom:0}
+  .news time{color:var(--muted); font-size:14px; padding-top:2px}
+
+  /* publications */
+  .pub-note{color:var(--muted); font-size:14px; margin:-12px 0 28px}
+  .year{display:grid; grid-template-columns:88px 1fr; gap:16px; margin-bottom:28px}
+  .year > h3{
+    font-family:"Newsreader",Georgia,serif; font-weight:400; font-size:26px;
+    color:var(--muted); margin:0; line-height:1; padding-top:4px;
+  }
+  .year ol{list-style:none; margin:0; padding:0}
+  .pub{padding:14px 0; border-bottom:1px solid var(--rule)}
+  .pub:last-child{border-bottom:0}
+  .pub .t{color:var(--ink); font-weight:500; margin:0 0 3px; line-height:1.4}
+  .pub .t a{color:inherit}
+  .pub .t a:hover{color:var(--teal)}
+  .pub .a{margin:0 0 4px; font-size:15px; color:var(--body)}
+  .pub .a b{font-weight:600; color:var(--ink)}
+  .pub .v{margin:0; font-size:14px; color:var(--muted); display:flex; flex-wrap:wrap; gap:4px 14px; align-items:center}
+  .pub .v em{font-style:normal; color:var(--teal)}
+  .pub .v a{font-size:14px}
+  .star{color:var(--teal); font-weight:600}
+
+  /* cv */
+  .cv{display:grid; grid-template-columns:88px 1fr; gap:16px 16px; margin-bottom:20px}
+  .cv h3{margin:0; font-size:15px; font-weight:600; color:var(--ink); padding-top:2px}
+  .cv dl{margin:0}
+  .cv .row{display:grid; grid-template-columns:120px 1fr; gap:12px; padding:8px 0; border-bottom:1px solid var(--rule)}
+  .cv .row:last-child{border-bottom:0}
+  .cv dt{color:var(--muted); font-size:14px; padding-top:2px}
+  .cv dd{margin:0; color:var(--ink)}
+  .cv dd small{display:block; color:var(--body); font-size:14px; font-weight:400}
+  .todo{color:var(--muted); font-style:italic}
+  .btn{
+    display:inline-block; margin-top:8px; padding:9px 16px; border-radius:6px;
+    background:var(--teal); color:#fff; font-weight:500; font-size:15px; border:0;
+  }
+  .btn:hover{opacity:.92; border:0}
+
+  footer{border-top:1px solid var(--rule); padding:28px 0 40px; color:var(--muted); font-size:14px}
+
+  /* ---------- responsive ---------- */
+  @media (max-width:900px){
+    .layout{grid-template-columns:1fr; gap:40px; padding:48px 0 64px}
+    .side{position:static}
+    nav{display:none}
+    h1{font-size:34px}
+    .lede{font-size:21px}
+  }
+  @media (max-width:560px){
+    .year,.cv,.news li{grid-template-columns:1fr; gap:8px}
+    .year > h3{font-size:22px}
+    .cv .row{grid-template-columns:1fr; gap:2px}
+    .wrap{padding:0 18px}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="layout">
+
+  <!-- ================= SIDEBAR ================= -->
+  <aside class="side">
+    <img class="photo" src="photo.jpg" alt="Portrait of Hangyul Yoon" onerror="this.style.display='none'">
+    <h1>Hangyul Yoon</h1>
+    <p class="hanja">윤한결 · MD</p>
+    <p class="role">Physician &amp; AI researcher</p>
+    <p class="affil">
+      MSc student, Kim Jaechul Graduate School of AI<br>
+      <a href="https://www.kaist.ac.kr/en/" rel="noopener">KAIST</a>, South Korea
+    </p>
+
+    <nav aria-label="Sections">
+      <a href="#about">About</a>
+      <a href="#news">News</a>
+      <a href="#publications">Publications</a>
+      <a href="#cv">CV</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
+    <div class="links">
+      <a href="https://scholar.google.com/citations?user=5JdmBUgAAAAJ" rel="noopener">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 1 9l11 6 9-4.9V17h2V9L12 3zm-6.5 9.7v4.2L12 20l6.5-3.1v-4.2L12 16.2l-6.5-3.5z"/></svg>Scholar</a>
+      <a href="https://www.linkedin.com/in/hangyul-yoon-a10838203/" rel="noopener">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zm7 0h3.8v1.7h.1c.5-1 1.8-2 3.7-2 4 0 4.7 2.6 4.7 6V21h-4v-5.5c0-1.3 0-3-1.8-3s-2.1 1.4-2.1 2.9V21h-4z"/></svg>LinkedIn</a>
+      <a href="https://github.com/hangyulyoon" rel="noopener">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .5a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2.2c-3.3.7-4-1.4-4-1.4-.6-1.4-1.4-1.8-1.4-1.8-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1.1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-5.9 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.7 1.7.2 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .5z"/></svg>GitHub</a>
+      <a href="cv.pdf">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 2h8l6 6v14H6zm7 1.5V9h5.5zM8 13h8v1.5H8zm0 3h8v1.5H8z"/></svg>CV</a>
+    </div>
+  </aside>
+
+  <!-- ================= MAIN ================= -->
+  <main>
+
+    <section id="about">
+      <p class="lede">
+        I am a physician working on machine learning for medicine — teaching
+        vision-language models to read chest X-rays the way a clinician does,
+        and building benchmarks that test whether large language models can
+        actually reason over real patient records.
+      </p>
+      <p>
+        I am an MSc student at the Kim Jaechul Graduate School of AI at KAIST,
+        working with Prof. Eunho Yang and collaborating closely with Prof. Edward Choi's group
+        and the Microsoft Research Health Futures team. My research centers on
+        multimodal medical AI: sentence-level vision-language pretraining,
+        instruction-guided lesion segmentation, one-shot adaptation of foundation
+        models to medical images, and structured, longitudinal evaluation of
+        radiology report generation.
+      </p>
+      <p>
+        Before moving into AI, my research was in radiation oncology, where I
+        studied sarcopenia and treatment response in thoracic cancers and built
+        early machine-learning models to predict muscle loss during
+        chemoradiotherapy. That clinical background shapes how I think about what a
+        model needs to get right before it is useful at the bedside.
+      </p>
+      <div class="interests">
+        <span>Medical vision-language models</span>
+        <span>Chest X-ray interpretation</span>
+        <span>Clinical LLM benchmarks</span>
+        <span>Medical image segmentation</span>
+        <span>Oncology outcomes</span>
+      </div>
+    </section>
+
+    <section id="news">
+      <h2>News</h2>
+      <ul class="news">
+        <li><time>Sep 2026</time><span>Three co-authored papers accepted to the <strong>NeurIPS 2026</strong> Datasets &amp; Benchmarks track.</span></li>
+        <li><time>Sep 2026</time><span>New preprint: <a href="#sentzero">SentZero</a>, sentence-centric vision-language pretraining for zero-shot chest X-ray analysis.</span></li>
+        <li><time>Jun 2026</time><span>Presented <a href="#lunguage">LUNGUAGE</a>, a benchmark for structured and sequential chest X-ray interpretation, at <strong>CHIL 2026</strong>.</span></li>
+        <li><time>Nov 2025</time><span>Released <a href="#ils">MIMIC-ILS</a>: 1.1M instruction–answer pairs for lesion segmentation in chest X-rays, generated without manual annotation.</span></li>
+        <li><time>Nov 2024</time><span>Preprint: <a href="#medpersam">Med-PerSAM</a>, one-shot visual prompt tuning for SAM in the medical domain.</span></li>
+      </ul>
+    </section>
+
+    <section id="publications">
+      <h2>Publications</h2>
+      <p class="pub-note"><span class="star">*</span> first or co-first author. Full list on
+        <a href="https://scholar.google.com/citations?user=5JdmBUgAAAAJ" rel="noopener">Google Scholar</a>.</p>
+
+      <!-- 2026 -->
+      <div class="year"><h3>2026</h3><ol>
+        <li class="pub" id="sentzero">
+          <p class="t"><a href="https://arxiv.org/abs/2609.34479" rel="noopener">SentZero: An Enhanced Sentence-Centric Vision-Language Pretraining for Multi-Task Zero-Shot Chest X-Ray Analysis</a> <span class="star">*</span></p>
+          <p class="a"><b>Hangyul Yoon</b>, Hyungyung Lee, Edward Choi, Eunho Yang</p>
+          <p class="v"><em>arXiv preprint</em><a href="https://arxiv.org/abs/2609.34479" rel="noopener">arXiv</a></p>
+        </li>
+        <li class="pub">
+          <p class="t"><a href="https://arxiv.org/abs/2606.15735" rel="noopener">EHRNote-ChatQA: A Benchmark for Evidence-Grounded Multi-Turn Clinical Question Answering over Longitudinal Discharge Summaries</a></p>
+          <p class="a">Jiyoun Kim, Muhan Yeo, Eunhye Jang, Jeewon Yang, …, <b>Hangyul Yoon</b>, et al.</p>
+          <p class="v"><em>arXiv preprint</em><a href="https://arxiv.org/abs/2606.15735" rel="noopener">arXiv</a></p>
+        </li>
+        <li class="pub">
+          <p class="t"><a href="https://arxiv.org/abs/2606.09030" rel="noopener">TRIAGE: Dialectical LLM Reasoning for Explainable Risk Prediction on Irregularly Sampled Medical Time Series</a></p>
+          <p class="a">Hyeongwon Jang, Gyouk Chu, Changhun Kim, <b>Hangyul Yoon</b>, et al.</p>
+          <p class="v"><em>arXiv preprint</em><a href="https://arxiv.org/abs/2606.09030" rel="noopener">arXiv</a></p>
+        </li>
+        <li class="pub">
+          <p class="t"><a href="https://arxiv.org/abs/2603.14326" rel="noopener">ECG-Reasoning-Benchmark: A Benchmark for Evaluating Clinical Reasoning Capabilities in ECG Interpretation</a></p>
+          <p class="a">Jungwoo Oh, Hyunseung Chung, Junhee Lee, Min-Gyu Kim, …, <b>Hangyul Yoon</b>, et al.</p>
+          <p class="v"><em>arXiv preprint</em><a href="https://arxiv.org/abs/2603.14326" rel="noopener">arXiv</a></p>
+        </li>
+        <li class="pub" id="lunguage">
+          <p class="t"><a href="https://arxiv.org/abs/2505.21190" rel="noopener">LUNGUAGE: A Benchmark for Structured and Sequential Chest X-ray Interpretation</a></p>
+          <p class="a">Jong Hak Moon, Geon Choi, Paloma Rabaey, Min Gwan Kim, Hyuk Gi Hong, Jung-Oh Lee, <b>Hangyul Yoon</b>, et al.</p>
+          <p class="v"><em>CHIL 2026</em><a href="https://arxiv.org/abs/2505.21190" rel="noopener">arXiv</a></p>
+        </li>
+      </ol></div>
+
+      <!-- 2025 -->
+      <div class="year"><h3>2025</h3><ol>
+        <li class="pub" id="ils">
+          <p class="t"><a href="https://arxiv.org/abs/2511.15186" rel="noopener">Instruction-Guided Lesion Segmentation for Chest X-rays with Automatically Generated Large-Scale Dataset</a></p>
+          <p class="a">Geon Choi, <b>Hangyul Yoon</b>, Hyunju Shin, Hyunki Park, et al.</p>
+          <p class="v"><em>arXiv preprint</em><a href="https://arxiv.org/abs/2511.15186" rel="noopener">arXiv</a></p>
+        </li>
+        <li class="pub">
+          <p class="t"><a href="https://arxiv.org/abs/2505.18087" rel="noopener">CXReasonBench: A Benchmark for Evaluating Structured Diagnostic Reasoning in Chest X-rays</a></p>
+          <p class="a">Hyungyung Lee, Geon Choi, Jung-Oh Lee, <b>Hangyul Yoon</b>, Hyuk Gi Hong, Edward Choi</p>
+          <p class="v"><em>arXiv preprint</em><a href="https://arxiv.org/abs/2505.18087" rel="noopener">arXiv</a></p>
+        </li>
+      </ol></div>
+
+      <!-- 2024 -->
+      <div class="year"><h3>2024</h3><ol>
+        <li class="pub" id="medpersam">
+          <p class="t"><a href="https://arxiv.org/abs/2411.16123" rel="noopener">Med-PerSAM: One-Shot Visual Prompt Tuning for Personalized Segment Anything Model in Medical Domain</a> <span class="star">*</span></p>
+          <p class="a"><b>Hangyul Yoon</b>, Doohyuk Jang, Jungeun Kim, Eunho Yang</p>
+          <p class="v"><em>arXiv preprint</em><a href="https://arxiv.org/abs/2411.16123" rel="noopener">arXiv</a></p>
+        </li>
+        <li class="pub">
+          <p class="t"><a href="https://arxiv.org/abs/2404.01464" rel="noopener">Data-Efficient Unsupervised Interpolation Without Any Intermediate Frame for 4D Medical Images</a></p>
+          <p class="a">JungEun Kim, <b>Hangyul Yoon</b>, Geondo Park, Kyungsu Kim, Eunho Yang</p>
+          <p class="v"><em>CVPR 2024</em><a href="https://arxiv.org/abs/2404.01464" rel="noopener">arXiv</a></p>
+        </li>
+        <li class="pub">
+          <p class="t"><a href="https://arxiv.org/abs/2402.16040" rel="noopener">EHRNoteQA: An LLM Benchmark for Real-World Clinical Practice Using Discharge Summaries</a></p>
+          <p class="a">Sunjun Kweon, Jiyoun Kim, Heeyoung Kwak, Dongchul Cha, <b>Hangyul Yoon</b>, Kwanghyun Kim, Seunghyun Won, Edward Choi</p>
+          <p class="v"><em>NeurIPS 2024 Datasets &amp; Benchmarks</em><a href="https://arxiv.org/abs/2402.16040" rel="noopener">arXiv</a></p>
+        </li>
+      </ol></div>
+
+      <!-- 2023 -->
+      <div class="year"><h3>2023</h3><ol>
+        <li class="pub">
+          <p class="t">Liquid biopsy using cfDNA to predict radiation therapy response in solid tumors</p>
+          <p class="a">Won Kyung Cho, Jeeyun Lee, Sun-Mi Youn, Dongryul Oh, Do Hoon Lim, <b>Han Gyul Yoon</b>, Eun Hye Cho, Jae Myoung Noh</p>
+          <p class="v"><em>Radiation Oncology Journal</em> 41(1):32</p>
+        </li>
+      </ol></div>
+
+      <!-- 2021 -->
+      <div class="year"><h3>2021</h3><ol>
+        <li class="pub">
+          <p class="t">Machine learning model for predicting excessive muscle loss during neoadjuvant chemoradiotherapy in oesophageal cancer <span class="star">*</span></p>
+          <p class="a"><b>Han Gyul Yoon</b>, Dongryul Oh, Jae Myoung Noh, Won Kyung Cho, Jong-Mu Sun, Hong Kwan Kim, Jae Ill Zo, Young Mog Shim, et al.</p>
+          <p class="v"><em>Journal of Medical Internet Research</em> 23(8):e28695</p>
+        </li>
+      </ol></div>
+
+      <!-- 2020 -->
+      <div class="year"><h3>2020</h3><ol>
+        <li class="pub">
+          <p class="t">Prognostic impact of sarcopenia and skeletal muscle loss during neoadjuvant chemoradiotherapy in esophageal cancer <span class="star">*</span></p>
+          <p class="a"><b>Han Gyul Yoon</b>, Dongryul Oh, Yong Chan Ahn, Jae Myoung Noh, Hongryull Pyo, Won Kyung Cho, Yoon Mi Song, Minsu Park, et al.</p>
+          <p class="v"><em>Cancers</em></p>
+        </li>
+      </ol></div>
+
+      <!-- 2019 -->
+      <div class="year"><h3>2019</h3><ol>
+        <li class="pub">
+          <p class="t">Higher thoracic radiation dose is beneficial in patients with extensive small cell lung cancer <span class="star">*</span></p>
+          <p class="a"><b>Han Gyul Yoon</b>, Jae Myoung Noh, Yong Chan Ahn, Dongryul Oh, Hongryull Pyo, Hojoong Kim</p>
+          <p class="v"><em>Radiation Oncology Journal</em> 37(3):185</p>
+        </li>
+      </ol></div>
+    </section>
+
+    <section id="cv">
+      <h2>Curriculum vitae</h2>
+
+      <div class="cv">
+        <h3>Education</h3>
+        <dl>
+          <div class="row"><dt>2022 – present</dt><dd>MSc, Artificial Intelligence <small>Kim Jaechul Graduate School of AI, KAIST</small></dd></div>
+          <div class="row"><dt><span class="todo">year</span></dt><dd>MD <small class="todo">Medical school — fill in</small></dd></div>
+        </dl>
+      </div>
+
+      <div class="cv">
+        <h3>Clinical &amp; research experience</h3>
+        <dl>
+          <div class="row"><dt><span class="todo">years</span></dt><dd>Radiation oncology <small class="todo">Hospital / department — fill in (residency, research fellowship, etc.)</small></dd></div>
+          <div class="row"><dt>2022 – present</dt><dd>Graduate researcher, medical AI <small>KAIST — vision-language pretraining, medical segmentation, clinical LLM evaluation</small></dd></div>
+        </dl>
+      </div>
+
+      <div class="cv">
+        <h3>Collaborations</h3>
+        <dl>
+          <div class="row"><dt></dt><dd>Microsoft Research, Health Futures <small>LUNGUAGE benchmark for structured radiology report evaluation</small></dd></div>
+          <div class="row"><dt></dt><dd>Edward Choi lab, KAIST <small>EHRNoteQA, CXReasonBench, instruction-guided lesion segmentation</small></dd></div>
+        </dl>
+      </div>
+
+      <a class="btn" href="cv.pdf">Download full CV (PDF)</a>
+    </section>
+
+    <section id="contact">
+      <h2>Contact</h2>
+      <p>The best way to reach me is email: <a href="mailto:EMAIL">EMAIL</a>.<br>
+         I am happy to talk about medical vision-language research, clinical benchmarks, and collaborations between clinicians and ML researchers.</p>
+    </section>
+
+    <footer>© <span id="y">2026</span> Hangyul Yoon</footer>
+  </main>
+
+</div>
+</div>
+<script>document.getElementById('y').textContent=new Date().getFullYear();</script>
+</body>
+</html>
